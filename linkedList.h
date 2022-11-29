@@ -1,14 +1,14 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
+using namespace std;
 
 template <class T>
 class Chain
 {
 public:
     Chain();
-    ~Chain();
     void Insert(const T &e);
-    // insert q node in the list
+    // insert q node in front of the list
     void Delete(const T &e);
     // delte a node in the list
     template <typename U>
