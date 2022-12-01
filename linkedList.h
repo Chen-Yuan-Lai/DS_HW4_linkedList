@@ -14,21 +14,33 @@ public:
     template <typename U>
     friend ostream &operator<<(ostream &os, Chain<U> &s);
 
-private:
-    class Node
-    { // nested class
+    // Forward declaration
+    class ChainIterator;
+    // root of linkedlist wrapped in Iterator type
+    ChainIterator begin() { return ChainIterator(first); }
+    // end of linkedList wrapped in Iterator type
+    ChainIterator end() { return ChainIterator(0); }
+
+    class ChainIterator
+    {
     public:
-        Node(int element = 0, Node *next = 0)
-        { // 0 is the defult value for element and next
-            data = element;
-            link = next;
-        }
+        // contructor
+        ChainIterator(Node *startNode = 0) : current(startNode) private : Node * current;
+    }
+
+    private : class Node
+    { // nested class for node
+    public:
+        // 0 is the defult value for element and next
+        Node() : data(0), link(0) {}
+        Node(T &a) : data(a), link(0) {}
 
     private:
         T data;
         Node *link;
     };
     Node *first;
+    Node *last;
 };
 
 #endif
