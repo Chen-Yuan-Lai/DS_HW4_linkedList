@@ -5,8 +5,20 @@ using namespace std;
 template <class T>
 Chain<T>::Chain()
 {
-    Node header = new Node();
-    first = last = &header;
+    Node head = new Node;
+    first = last = &head;
+}
+
+template <class T>
+Chain<T>::~Chain()
+{
+    Node *cur = first;
+    while (cur != 0)
+    {
+        Node *temp = cur;
+        cur = cur->link;
+        delete temp;
+    }
 }
 
 template <class T>
