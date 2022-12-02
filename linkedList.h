@@ -10,17 +10,17 @@ class Chain
 public:
     Chain();
     ~Chain();
-    void InsertBack(const T &e);
     // insert q node in front of the list
-    void Delete(const T &e);
-    // delte a node in the list
-    template <typename U>
-    friend ostream &operator<<(ostream &os, Chain<U> &s);
+    void InsertBack(const T e);
+    // delte a node in end of the list
+    void DeleteFront();
+
+    Chain merge(Chain &y);
 
     // Forward declaration
     class ChainIterator;
     // root of linkedlist wrapped in Iterator type
-    ChainIterator begin() { return ChainIterator(first); }
+    ChainIterator begin() { return ChainIterator(first->next); }
     // end of linkedList wrapped in Iterator type
     ChainIterator end() { return ChainIterator(0); }
 
@@ -28,7 +28,7 @@ public:
     {
     public:
         // contructor
-        ChainIterator(Node *startNode = 0) : current(startNode) {}
+        ChainIterator(Node *startNode = 0) : current(startNode){};
         // deferencing operators
         T &operator*() const { return current->data; }
         T *operator->() const { return &current->data; }
@@ -36,13 +36,13 @@ public:
         // increment
         ChainIterator &operator++() // preincrement
         {
-            current = current->link;
+            current = current->next;
             return *this;
         }
-        ChainIterator &operator++(int) // postincrement
+        ChainIterator operator++(int) // postincrement
         {
             ChainIterator old = *this;
-            current = current->link;
+            current = current->next;
             return old;
         }
         // equality testing
@@ -63,14 +63,10 @@ private:
     class Node
     { // nested class for node
     public:
-        T data;
-        Node *link;
         // 0 is the defult value for element and next
-        Node(T element = 0, Node *next = 0)
-        {
-            data = element;
-            link = next;
-        }
+        Node(T element = 0) : data(element), next(0){};
+        T data;
+        Node *next;
     };
     Node *first;
     Node *last;
