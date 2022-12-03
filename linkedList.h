@@ -14,8 +14,13 @@ public:
     void InsertBack(const T e);
     // delte a node in end of the list
     void DeleteFront();
-
+    // Exercise 4 of Chapter 4.2
     Chain merge(Chain &y);
+    // Exercise 5 of Chapter 4.2
+    Chain merge2(Chain &y);
+
+    // Exercise 4 of Chapter 4.3
+    int expr();
 
     // Forward declaration
     class ChainIterator;
@@ -23,6 +28,9 @@ public:
     ChainIterator begin() { return ChainIterator(first->next); }
     // end of linkedList wrapped in Iterator type
     ChainIterator end() { return ChainIterator(0); }
+
+    template <typename U>
+    friend ostream &operator<<(ostream &os, Chain<U> &s);
 
     class ChainIterator
     {
@@ -59,7 +67,7 @@ public:
         Node *current;
     };
 
-private:
+protected:
     class Node
     { // nested class for node
     public:

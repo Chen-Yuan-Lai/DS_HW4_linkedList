@@ -5,31 +5,34 @@
 int main()
 {
     Chain<int> x;
-    x.InsertBack(1);
-    x.InsertBack(3);
-    x.InsertBack(5);
-    x.InsertBack(7);
-    x.InsertBack(9);
-    for (Chain<int>::ChainIterator i = x.begin(); i != x.end(); i++)
+    for (int i = 1; i <= 10; i++)
     {
-        cout << *i << " ";
+        x.InsertBack(i);
     }
-    cout << endl;
 
-    Chain<int> y;
-    y.InsertBack(2);
-    y.InsertBack(4);
-    y.InsertBack(6);
-    y.InsertBack(8);
-    y.InsertBack(10);
+    cout << x << endl;
 
-    Chain<int> z = x.merge(y);
+    cout << x.expr() << endl;
 
-    for (Chain<int>::ChainIterator i = z.begin(); i != z.end(); i++)
-    {
-        cout << *i << " ";
-    }
-    cout << endl;
+    // Chain<int> y;
+    // y.InsertBack(3);
+    // y.InsertBack(5);
+    // y.InsertBack(7);
+    // y.InsertBack(10);
+    // y.InsertBack(10);
+
+    // for (Chain<int>::ChainIterator i = y.begin(); i != y.end(); i++)
+    // {
+    //     cout << *i << " ";
+    // }
+    // cout << endl;
+
+    // Chain<int> z = x.merge2(y);
+
+    // for (Chain<int>::ChainIterator i = z.begin(); i != z.end(); i++)
+    // {
+    //     cout << *i << " ";
+    // }
 
     return 0;
 }
