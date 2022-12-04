@@ -67,7 +67,7 @@ public:
         Node *current;
     };
 
-protected:
+private:
     class Node
     { // nested class for node
     public:
